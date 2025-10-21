@@ -1,0 +1,29 @@
+[project]
+name = "gerador-relatorio"
+version = "1.0.0"
+description = "CLI para geração de relatórios de vendas"
+authors = [
+    {name = "Wesley Marques", email = "wesleymr59@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+
+dependencies = [
+    "loguru>=0.7.3,<0.8.0",
+    "pydantic (>=2.12.3,<3.0.0)"
+]
+
+[project.scripts]
+vendas-cli = "main:main"
+
+[project.urls]
+Homepage = "https://github.com/wesleymr59/gerador-relatorio"
+Repository = "https://github.com/wesleymr59/gerador-relatorio"
+Issues = "https://github.com/wesleymr59/gerador-relatorio/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.md", "*.yml", "*.yaml"]
