@@ -3,7 +3,6 @@ from src.infra.input.input import Input
 from src.infra.output.output import Output
 
 
-
 def main():
     input_handler = Input()
     output_handler = Output()

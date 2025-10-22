@@ -18,7 +18,7 @@ class Output:
             with open(args.input_file, 'r') as f:
                 reader = csv.reader(f)
                 data = self._convert_to_json(list(reader))
-                return self.principal_calulation(data, args)
+                return self.principal_calculation(data, args)
         except FileNotFoundError:
             logger.error(f"Arquivo '{args.input_file}' não encontrado!")
             sys.exit(1)
@@ -37,7 +37,7 @@ class Output:
             logger.error(f"Erro ao converter para JSON: {e}")
             return []
 
-    def principal_calulation(self, data: List[Products], args) -> str:
+    def principal_calculation(self, data: List[Products], args) -> str:
         dt_start = datetime.strptime(args.dateStart, "%Y-%m-%d").date() if args.dateStart else None
         dt_end = datetime.strptime(args.dateEnd, "%Y-%m-%d").date() if args.dateEnd else None
 

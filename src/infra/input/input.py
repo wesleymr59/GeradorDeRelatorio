@@ -7,7 +7,6 @@ class Input:
         self.parser = self._create_parser()
     
     def _create_parser(self):
-        """Cria o parser de argumentos da linha de comando"""
         parser = argparse.ArgumentParser(
             description="Gerador de Relatórios",
             formatter_class=argparse.RawDescriptionHelpFormatter
@@ -18,7 +17,7 @@ class Input:
             'input_file',
             help='Arquivo de entrada (CSV)'
         )
-        
+        # Argumentos obrigatórios
         
         parser.add_argument(
             '-f', '--format',
@@ -39,7 +38,6 @@ class Input:
         return parser
     
     def parse_arguments(self):
-        """Parse e valida os argumentos da linha de comando"""
         try:
             args = self.parser.parse_args()
             return args
@@ -50,5 +48,4 @@ class Input:
             sys.exit(0)
     
     def get_arguments(self):
-        """Método principal para obter argumentos validados"""
         return self.parse_arguments()
