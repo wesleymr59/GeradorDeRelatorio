@@ -108,3 +108,17 @@ def test_generate_text_output(output):
     assert "B               |   60.00" in result
     assert "Total Geral   | $ 135.00" in result
     assert "Mais Vendido       | B (20)" in result
+
+def test_calculate_total_sell_products(output, mock_args):
+    data = [
+        Products(produto="A", quantidade=10, preco_unitario=5.0, data=datetime(2023, 1, 1)),
+        Products(produto="B", quantidade=20, preco_unitario=3.0, data=datetime(2023, 2, 1)),
+        Products(produto="A", quantidade=5, preco_unitario=5.0, data=datetime(2023, 3, 1))
+    ]
+    
+    total_per_product, total_overall, most_sold_product, most_sold_quantity = output._calculate_total_sell_products(data, mock_args)
+
+    assert total_per_product == {'A': 75.0, 'B': 60.0}
+    assert total_overall == 135.0
+    assert most_sold_product == 'B'
+    assert most_sold_quantity == 20
