@@ -66,6 +66,36 @@ Atalhos via Makefile
 | `run_text`     | Roda a aplicação e gera o relatório em formato texto.   |
 | `run_datetime` | Roda a aplicação usando datas predefinidas no Makefile. |
 
+## Testes
+
+```bash
+python -m pytest --cov=src --cov-branch --cov-report=term-missing -v tests
+```
+Atalhos via Makefile
+
+| Comando        | Descrição                                               |
+| -------------- | ------------------------------------------------------- |
+| `test`         |Inicia a execução dos testes.                            |
+
+### Cobertura de Testes
+
+```text
+Name                            Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------------------
+src\__init__.py                     0      0      0      0   100%
+src\application\__init__.py         0      0      0      0   100%
+src\application\app.py             22      0      0      0   100%
+src\domain\models\__init__.py       0      0      0      0   100%
+src\domain\models\models.py         7      0      0      0   100%
+src\infra\input\__init__.py         0      0      0      0   100%
+src\infra\input\input.py           24      2      0      0    92%   45-46
+src\infra\output\__init__.py        0      0      0      0   100%
+src\infra\output\output.py         91     18     10      2    80%   21-26, 35-37, 70, 88-92, 137-139
+src\main.py                        10     10      2      0     0%   1-14
+---------------------------------------------------------------------------
+TOTAL                             154     30     12      2    80%
+```
+
 ## Observações
 
 Certifique-se de que o CSV de entrada esteja no formato correto, com as colunas: produto,quantidade,preco_unitario,data.
