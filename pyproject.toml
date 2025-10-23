@@ -25,8 +25,8 @@ Repository = "https://github.com/wesleymr59/gerador-relatorio"
 Issues = "https://github.com/wesleymr59/gerador-relatorio/issues"
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["app*"]
+where = ["src"]
+include = ["application*", "domain*", "infra*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.txt", "*.md", "*.yml", "*.yaml"]
