@@ -1,6 +1,6 @@
-from src.application.app import Application
-from src.infra.input.input import Input
-from src.infra.output.output import Output
+from application.app import Application
+from infra.input.input import Input
+from infra.output.output import Output
 
 
 def main():

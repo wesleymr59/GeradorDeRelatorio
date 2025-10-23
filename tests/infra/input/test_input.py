@@ -1,6 +1,5 @@
 import sys
 import pytest
-
 from src.infra.input.input import Input
 
 

@@ -1,6 +1,6 @@
 from loguru import logger
-from src.infra.input.input import Input
-from src.infra.output.output import Output
+from infra.input.input import Input
+from infra.output.output import Output
 
 
 

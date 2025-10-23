@@ -7,8 +7,7 @@ import argparse
 import sys
 import csv
 
-from src.domain.models.models import Products
-
+from domain.models.models import Products
 
 
 class Output:

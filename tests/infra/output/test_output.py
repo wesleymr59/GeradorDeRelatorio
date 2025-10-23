@@ -1,9 +1,9 @@
 import pytest
 from datetime import datetime
-from src.infra.output.output import Output
 from src.domain.models.models import Products
 import argparse
 import json
+from src.infra.output.output import Output
 
 @pytest.fixture
 def output():
@@ -122,3 +122,42 @@ def test_calculate_total_sell_products(output, mock_args):
     assert total_overall == 135.0
     assert most_sold_product == 'B'
     assert most_sold_quantity == 20
+
+def test_hydrate_data_return_json(output):
+    total_per_product = {"A": 75.0, "B": 60.0}
+    total_overall = 135.0
+    most_sold_product = "B"
+    most_sold_quantity = 20
+
+    result = output._hydrate_data_return(
+        data_type="json",
+        total_per_product=total_per_product,
+        total_overall=total_overall,
+        most_sold_product=most_sold_product,
+        most_sold_quantity=most_sold_quantity
+    )
+
+    result_dict = json.loads(result)
+    assert result_dict["produtos"]["A"] == 75.0
+    assert result_dict["total_geral"] == 135.0
+    assert result_dict["mais_vendido"]["produto"] == "B"
+    assert result_dict["mais_vendido"]["quantidade"] == 20
+
+def test_hydrate_data_return_text(output):
+    total_per_product = {"A": 75.0, "B": 60.0}
+    total_overall = 135.0
+    most_sold_product = "B"
+    most_sold_quantity = 20
+
+    result = output._hydrate_data_return(
+        data_type="text",
+        total_per_product=total_per_product,
+        total_overall=total_overall,
+        most_sold_product=most_sold_product,
+        most_sold_quantity=most_sold_quantity
+    )
+
+    assert "A               |   75.00" in result
+    assert "B               |   60.00" in result
+    assert "Total Geral   | $ 135.00" in result
+    assert "Mais Vendido       | B (20)" in result
